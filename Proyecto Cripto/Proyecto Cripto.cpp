@@ -19,12 +19,7 @@ int main()
     fs.open("mensaje_con_firmas.txt", std::fstream::in);
 
     std::string str;
-    //for (int i = 0; i < str.length(); i++)
-    //{
-      //  printf("%c", str[i]);
-    //}
-    printf("%s\n", str.c_str());
-    printf("%u\n", str.length());
+
     fs >> str;
     printf("%s\n", str.c_str());
     char* cstr = new char[str.length() + 1];
@@ -53,14 +48,14 @@ int main()
 
     resultado = crypto_stream_chacha20_xor(c, MESSAGE, clen, nonce, key);
     printf("cifrado:\n");
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < clen; i++)
     {
         printf("%d", c[i]);
     }
     printf("\n");
     resultado = crypto_stream_chacha20_xor(decifrado, c, clen, nonce, key);
     printf("Descifrado:\n");
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < clen; i++)
     {
         printf("%c", decifrado[i]);
     }
